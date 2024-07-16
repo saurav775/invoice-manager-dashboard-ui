@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const CustomersPage = lazy(() =>
@@ -46,6 +46,10 @@ const AppRoutes = () => {
             <Route key={path} exact element={element} path={path} name={name} />
           );
         })}
+        <Route
+            path="*"
+            element={<Navigate to="/" replace />}
+        />
       </Routes>
     </Suspense>
   );
