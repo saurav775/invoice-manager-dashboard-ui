@@ -1,0 +1,113 @@
+@import "./variable";
+.layout-container {
+  display: flex;
+}
+
+.left-content {
+  display: flex;
+}
+
+.right-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  width: 27rem;
+  background-color: $dark-blue;
+  height: 100vh;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1.6rem;
+}
+
+.short-logo {
+  background-color: $theme;
+  color: $white;
+  padding: 0.8rem 1.2rem;
+  margin-right: 1.6rem;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  border-bottom: 2px solid $border-lg-blue-color;
+}
+
+.logo {
+  color: $white;
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+
+.logo-desc {
+  font-size: 1.2rem;
+  color: $text-secondary-color;
+}
+
+.nav-links {
+  margin: 2rem 0;
+  .link-item {
+    display: flex;
+    align-items: center;
+    color: $white;
+    font-size: 1.6rem;
+    padding: 1rem 1.6rem;
+    cursor: pointer;
+    &:hover {
+      background-color: $hover-primary-color;
+    }
+    &.active-item {
+      background-color: $theme;
+    }
+    .short-link {
+      border: 2px solid $text-secondary-color;
+      border-radius: 50%;
+      height: 2.8rem;
+      width: 2.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1.6rem;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.breadcrumb-container {
+  background-color: $bg-seconday-color;
+  padding: 0.8rem 3.6rem;
+  border-bottom: 1px solid $border-grey;
+  color: $text-grey;
+  a {
+    color: $text-grey;
+    text-transform: capitalize;
+  }
+  .active {
+    color: $black;
+  }
+}
+
+.main-content {
+  height: calc(100vh - 41px - 54px - 48px);
+  background-color: $bg-seconday-color;
+  padding: 2.4rem 3.6rem;
+  overflow-y: scroll;
+}
+
+.footer-container {
+  text-transform: capitalize;
+  background-color: $bg-seconday-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.6rem;
+  color: $text-grey;
+  font-size: 1.4rem;
+  border-top: 1px solid $border-grey;
+}
