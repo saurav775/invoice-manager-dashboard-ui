@@ -12,7 +12,7 @@ module.exports = () => {
     output: {
       path: path.join(__dirname, "dist"),
       filename: "bundle.[name].[contenthash].js",
-      publicPath: "https://invoice-manager-dashboard-ui.vercel.app/dist/",
+      publicPath: "https://invoice-manager-dashboard-ui.vercel.app/",
     },
     plugins: [
       new ModuleFederationPlugin({
@@ -20,7 +20,7 @@ module.exports = () => {
         filename: "remoteEntry.js",
         remotes: {
           invoice_manager_dashboard_ui:
-            "invoice_manager_dashboard_ui@https://invoice-manager-dashboard-ui.vercel.app/dist/remoteEntry.js",
+            "invoice_manager_dashboard_ui@https://invoice-manager-dashboard-ui.vercel.app/remoteEntry.js",
           invoice_manager_customer_ui:
             "invoice_manager_customer_ui@http://localhost:3001/remoteEntry.js",
           invoice_manager_product_ui:
