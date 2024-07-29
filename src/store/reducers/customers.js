@@ -13,38 +13,7 @@ import {
 } from "invoice_manager_dashboard_ui/actionTypes";
 
 export const initialState = {
-  customers: [
-    {
-      customer_id: "h7pk00nw6b",
-      customer_name: "test1",
-      customer_email: "test3@gmail.com",
-      customer_phone: "9067453126",
-    },
-    {
-      customer_id: "g8jj57l5en",
-      customer_name: "test1",
-      customer_email: "test4@gmail.com",
-      customer_phone: "9067453127",
-    },
-    {
-      customer_id: "xmcyyey6gf",
-      customer_name: "test1",
-      customer_email: "test6@gmail.com",
-      customer_phone: "9067453129",
-    },
-    {
-      customer_id: "hizqg7qy50",
-      customer_name: "test2",
-      customer_email: "test10@gmail.com",
-      customer_phone: "9087123210",
-    },
-    {
-      customer_id: "hizqg7qy5g",
-      customer_name: "test10",
-      customer_email: "test5@gmail.com",
-      customer_phone: "9067453128",
-    },
-  ],
+  customers: [],
   isLoading: false,
   selectedCustomer: {},
 };

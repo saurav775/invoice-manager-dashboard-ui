@@ -1,48 +1,53 @@
 import React, { useEffect } from "react";
-import { connect } from 'react-redux';
-import { KEY_INSIGHTS, WELCOME_BACK } from "invoice_manager_customer_ui/constants";
+import { connect } from "react-redux";
+import Loader from "invoice_manager_customer_ui/Loader";
+import {
+  KEY_INSIGHTS,
+  WELCOME_BACK,
+} from "invoice_manager_customer_ui/constants";
+import { getStats } from "../store/actions/stats.actions";
+import { camelToSentenceCase } from "../utils";
 
 const Dashboard = (props) => {
+  const { stats, getStats, statsLoading } = props;
 
-  const insights = [
-    {
-      title: "Total customers",
-      count: 20,
-    },
-    {
-      title: "Total products",
-      count: 50,
-    },
-    {
-      title: "Total orders delivered",
-      count: 100,
-    },
-    {
-      title: "Total orders declined",
-      count: 5,
-    },
-  ];
+  useEffect(() => {
+    getStats();
+  }, []);
+
+  const renderStats = () => {
+    if (statsLoading) return <Loader />;
+    if (!Object.keys(stats).length) return <div>No stats found.</div>;
+    return (
+      <div className="insights-wrp">
+        {Object.keys(stats).map((stat) => (
+          <div className="insight-card" key={stat}>
+            <p>{camelToSentenceCase(stat)}</p>
+            <h1>{stats[stat]}</h1>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <div className="dashboard-container">
       <h1>{WELCOME_BACK}</h1>
       <div className="key-insights-card">
         <p>{KEY_INSIGHTS}</p>
-        <div className="insights-wrp">
-          {insights.map(({ title, count }) => (
-            <div className="insight-card" key={title}>
-              <p>{title}</p>
-              <h1>{count}</h1>
-            </div>
-          ))}
-        </div>
+        {renderStats()}
       </div>
     </div>
   );
 };
 
-const mapStateToProps = ({ customers }) => ({
-    customers: customers
-})
+const mapStateToProps = ({ stats }) => ({
+  stats: stats.stats,
+  statsLoading: stats.isLoading,
+});
 
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = {
+  getStats,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
